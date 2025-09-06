@@ -1555,7 +1555,7 @@ class AdvancedFeatureEngineer:
         # Stochastic Oscillator with symbol-specific parameters
         stoch_params = config["stoch_params"]
         stoch = StochasticOscillator(df["high"], df["low"], df["close"], 
-                                   window=stoch_params["k"], k_period=stoch_params["k"], d_period=stoch_params["d"])
+                                   window=stoch_params["k"], smooth_window=stoch_params["d"])
         df["stoch_k"] = stoch.stoch()
         df["stoch_d"] = stoch.stoch_signal()
         df["stoch_oversold"] = (df["stoch_k"] < 20).astype(int)
